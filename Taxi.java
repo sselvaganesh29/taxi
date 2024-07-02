@@ -4,10 +4,15 @@ import java.util.Collection;
 public class Taxi
 {
     private int taxi_no;
+
     private String taxi_name;
+
     private boolean available;
+
     private int destination;
+
     private final Collection<Ride> rides = new ArrayList<>();
+
 
     public Taxi(int taxi_no,String taxi_name,boolean available)
     {

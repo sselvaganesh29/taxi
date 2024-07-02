@@ -6,7 +6,6 @@ public class Main
     {
 
         TaxiManager taximanager = new TaxiManager();
-        RideManager rideManager = new RideManager();
 
         Taxi taxi_1 = new Taxi(365, "veghar", false);
         Taxi taxi_2 = new Taxi(370, "caraxes", true);
