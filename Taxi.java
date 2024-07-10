@@ -3,33 +3,35 @@ import java.util.Collection;
 
 public class Taxi
 {
-    private int taxi_no;
+    private int taxiNo;
 
-    private String taxi_name;
+    private String taxiName;
 
     private boolean available;
 
     private int destination;
 
+    private int price;
+
     private final Collection<Ride> rides = new ArrayList<>();
 
 
-    public Taxi(int taxi_no,String taxi_name,boolean available)
+    public Taxi(int taxino, String taxi_name, boolean available)
     {
-        this.taxi_no = taxi_no;
-        this.taxi_name = taxi_name;
+        this.taxiNo = taxiNo;
+        this.taxiName = taxiName;
         this.available = available;
     }
 
-    public Taxi(int taxi_no,String taxi_name)
+    public Taxi(int taxiNo,String taxiName)
     {
-        this.taxi_no = taxi_no;
-        this.taxi_name = taxi_name;
+        this.taxiNo = taxiNo;
+        this.taxiName = taxiName;
     }
 
-    public int getTaxi_no()
+    public int getTaxiNo()
     {
-        return taxi_no;
+        return taxiNo;
     }
 
     public void addRide( Ride ride )
@@ -44,7 +46,7 @@ public class Taxi
 
     public String getTaxi_name()
     {
-        return taxi_name;
+        return taxiName;
     }
 
     public boolean isAvailable()
@@ -52,14 +54,14 @@ public class Taxi
         return available;
     }
 
-    public void setTaxi_no(int taxi_no)
+    public void setTaxi_no(int taxiNo)
     {
-        this.taxi_no = taxi_no;
+        this.taxiNo = taxiNo;
     }
 
-    public void setTaxi_name(String taxi_name)
+    public void setTaxi_name(String taxiName)
     {
-        this.taxi_name = taxi_name;
+        this.taxiName = taxiName;
     }
 
     public void setAvailable(boolean available)

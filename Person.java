@@ -4,8 +4,6 @@ public class Person
 
         private String name;
 
-        private int destination;
-
 
         public Person( int id, String name )
         {
@@ -18,19 +16,19 @@ public class Person
             return name;
         }
 
-        public void setId(int id)
+       public void setName(String name)
+         {
+            this.name = name;
+         }
+
+      public int getId()
+        {
+            return id;
+        }
+
+    public void setId(int id)
         {
             this.id = id;
-        }
-
-        public void setDestination(int destination)
-        {
-            this.destination = destination;
-        }
-
-        public int getDestination()
-        {
-            return destination;
         }
 
 

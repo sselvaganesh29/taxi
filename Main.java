@@ -4,26 +4,31 @@ public class Main
 {
     public static void main(String[] args)
     {
-
         TaxiManager taximanager = new TaxiManager();
 
-        Taxi taxi_1 = new Taxi(365, "veghar", false);
-        Taxi taxi_2 = new Taxi(370, "caraxes", true);
-        Taxi taxi_3 = new Taxi(380, "vermithor", true);
+        Taxi taxi1 = new Taxi(365, "ROLLS", false);
+        Taxi taxi2 = new Taxi(370, "VOLVO", true);
+        Taxi taxi3 = new Taxi(380, "BMW", true);
+        Taxi taxi4 = new Taxi(390, "BENZ", true);
+        Taxi taxi5 = new Taxi(400, "INOVUA", true);
 
-        taximanager.addTaxi(taxi_1);
-        taximanager.addTaxi(taxi_2);
-        taximanager.addTaxi(taxi_3);
-
-        Ride ride = new Ride( 1, new Taxi(1,"vhaghar"), new Person( 100, "Selva" ) ,1,5 );
-
+        taximanager.addTaxi(taxi1);
+        taximanager.addTaxi(taxi2);
+        taximanager.addTaxi(taxi3);
+        taximanager.addTaxi(taxi4);
+        taximanager.addTaxi(taxi5);
 
         taximanager.updateTaxi(370,"caraxes",false);
 
-        taximanager.delete_taxi(365);
+        taximanager.deleteTaxi(365);
 
-        Taxi taxidetail = taximanager.taxi_detail(380);
-        System.out.println("Taxi details for this taxi no:"+ taxidetail);
+        Taxi taxiinfo = taximanager.taxiDetail(380);
+        System.out.println("Taxi details for this taxi no:"+ taxiinfo);
+
+        taximanager.createRide(20,390,new Person(90,"selva"),8,10);
+
+        int price = taximanager.calculatePrice(8,10);
+        System.out.println("The ride price:" + price);
 
     }
 
