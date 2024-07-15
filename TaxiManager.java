@@ -1,15 +1,16 @@
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class TaxiManager
 {
-    private ArrayList<Taxi> taxiList;
+    public static final TaxiManager INSTANCE = new TaxiManager();
 
-    private ArrayList<Ride> rideList;
+    private final ArrayList<Taxi> taxiList;
 
-    public TaxiManager()
+
+    private TaxiManager()
     {
         taxiList = new ArrayList<>();
-        rideList = new ArrayList<>();
     }
 
 
@@ -19,13 +20,13 @@ public class TaxiManager
     }
 
 
-    public void updateTaxi(int taxiNo, String newtaxi_name, boolean newavailable)
+    public void updateTaxi(int taxiNo, String newtaxiName, boolean newavailable)
     {
         for (Taxi taxi : taxiList)
         {
-            if (taxi.getTaxiNo() == taxiNo)
+            if (taxi.getTaxino() == taxiNo)
             {
-                taxi.setTaxi_name(newtaxi_name);
+                taxi.setTaxiname(newtaxiName);
                 taxi.setAvailable(newavailable);
             }
         }
@@ -34,43 +35,19 @@ public class TaxiManager
 
     public void deleteTaxi(int taxiNo)
     {
-        taxiList.removeIf( taxi -> taxi.getTaxiNo() == taxiNo );
+        taxiList.removeIf( taxi -> taxi.getTaxino() == taxiNo );
     }
 
-    public Taxi taxiDetail( int taxiNo )
+    public Taxi taxiDetail(int taxiNo)
     {
         for ( Taxi taxi : taxiList )
         {
-            if ( taxi.getTaxiNo() == taxiNo )
+            if ( taxi.getTaxino() == taxiNo )
             {
                 return taxi;
             }
         }
         return null;
-    }
-
-
-    public void createRide(int rideId, int taxiNo, Person person, int startingPoint, int endingPoint)
-    {
-        Taxi taxi = taxiDetail(taxiNo);
-        if (taxi != null)
-        {
-            Ride ride = new Ride(rideId, taxi, person, startingPoint, endingPoint);
-            int price = calculatePrice(startingPoint, endingPoint);
-            rideList.add(ride);
-            ride.setEndingPoint(endingPoint);
-        }
-        else
-        {
-            System.out.println("This taxino is" + taxiNo + "not found");
-        }
-    }
-
-    public int calculatePrice(int startingPoint, int endingPoint)
-    {
-        int distance = Math.abs(startingPoint - endingPoint);
-        int pricePerkm = 50;
-        return distance * pricePerkm;
     }
 
 }

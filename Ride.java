@@ -8,22 +8,26 @@ public class Ride
 
     private Person person;
 
-    private int startingPoint = 1;
+    private int startingPoint;
 
     private int endingPoint;
 
-    private int destination;
+    private int destination = 1;
 
-    public Ride( int rideId, Taxi taxi, Person person, int startingPoint, int endingPoint)
+    private int fare;
+
+    public Ride( int rideId, Taxi taxi, Person person, int startingPoint, int endingPoint,int destination,int fare)
     {
         this.rideId = rideId;
         this.taxi = taxi;
         this.person = person;
         this.startingPoint = startingPoint;
         this.endingPoint = endingPoint;
+        this.destination = destination;
+        this.fare = fare;
     }
 
-    public int getrideId()
+    public int getRideId()
     {
         return rideId;
     }
@@ -48,7 +52,7 @@ public class Ride
         return endingPoint;
     }
 
-    public void setrideId(int id)
+    public void setRideid(int id)
     {
         this.rideId = id;
     }
@@ -83,4 +87,13 @@ public class Ride
         this.destination = destination;
     }
 
+    public int getFare()
+    {
+        return fare;
+    }
+
+    public void setFare(int fare)
+    {
+        this.fare = fare;
+    }
 }

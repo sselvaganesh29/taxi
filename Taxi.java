@@ -9,14 +9,16 @@ public class Taxi
 
     private boolean available;
 
-    private int destination;
+    private static final int pricePerkm = 50;
 
-    private int price;
+    private Collection<Ride> rides = new ArrayList<>();
 
-    private final Collection<Ride> rides = new ArrayList<>();
+    public Collection<Ride> getRides()
+    {
+        return rides;
+    }
 
-
-    public Taxi(int taxino, String taxi_name, boolean available)
+    public Taxi(int taxiNo, String taxiName, boolean available)
     {
         this.taxiNo = taxiNo;
         this.taxiName = taxiName;
@@ -29,9 +31,34 @@ public class Taxi
         this.taxiName = taxiName;
     }
 
-    public int getTaxiNo()
+    public int getTaxino()
     {
         return taxiNo;
+    }
+
+    public void setTaxino(int taxiNo)
+    {
+        this.taxiNo = taxiNo;
+    }
+
+    public String getTaxiName()
+    {
+        return taxiName;
+    }
+
+    public void setTaxiname(String taxiName)
+    {
+        this.taxiName = taxiName;
+    }
+
+    public boolean getAvailable()
+    {
+        return available;
+    }
+
+    public void setAvailable(boolean available)
+    {
+        this.available = available;
     }
 
     public void addRide( Ride ride )
@@ -44,29 +71,20 @@ public class Taxi
         rides.remove( ride );
     }
 
-    public String getTaxi_name()
+    public static int getPricePerkm()
     {
-        return taxiName;
+        return pricePerkm;
     }
 
-    public boolean isAvailable()
+
+    public void createRide(int rideId, Taxi taxi, Person person, int startingPoint, int endingPoint)
     {
-        return available;
+            int destination = Math.abs(startingPoint - endingPoint);
+            int fare = destination * pricePerkm;
+            Ride ride = new Ride(rideId, taxi, person, startingPoint, endingPoint,destination,fare);
+            taxi.getRides().add( ride );
+            ride.setEndingPoint(endingPoint);
     }
 
-    public void setTaxi_no(int taxiNo)
-    {
-        this.taxiNo = taxiNo;
-    }
-
-    public void setTaxi_name(String taxiName)
-    {
-        this.taxiName = taxiName;
-    }
-
-    public void setAvailable(boolean available)
-    {
-        this.available = available;
-    }
 
 }
