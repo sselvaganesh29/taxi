@@ -77,12 +77,12 @@ public class Taxi
     }
 
 
-    public void createRide(int rideId, Taxi taxi, Person person, int startingPoint, int endingPoint)
+    public void createRide(int rideId, Person person, int startingPoint, int endingPoint)
     {
             int destination = Math.abs(startingPoint - endingPoint);
             int fare = destination * pricePerkm;
-            Ride ride = new Ride(rideId, taxi, person, startingPoint, endingPoint,destination,fare);
-            taxi.getRides().add( ride );
+            Ride ride = new Ride(rideId, this, person, startingPoint, endingPoint,destination,fare);
+            this.getRides().add( ride );
             ride.setEndingPoint(endingPoint);
     }
 

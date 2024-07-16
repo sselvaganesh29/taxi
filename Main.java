@@ -26,7 +26,7 @@ public class Main
         Taxi taxiinfo = taximanager.taxiDetail(380);
         System.out.println("Taxi details for this taxi no:"+ taxiinfo);
 
-        taxi1.createRide(30,new Taxi(365,"ROLLS"), new Person(80,"Selva"),2,5);
+        taxi1.createRide(30, new Person(80,"Selva"),2,5);
 
 
     }
