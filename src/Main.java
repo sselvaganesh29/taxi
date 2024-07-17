@@ -29,6 +29,10 @@ public class Main
         taxi1.createRide(30, new Person(80,"Selva"),2,5);
         taxi1.showRideDetails();
 
+        System.out.println("-----------------");
+        Demo demo = new Demo();
+        demo.dummy();
+
 
 
 
