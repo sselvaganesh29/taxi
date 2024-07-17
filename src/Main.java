@@ -27,6 +27,9 @@ public class Main
         System.out.println("Taxi details for this taxi no:"+ taxiinfo);
 
         taxi1.createRide(30, new Person(80,"Selva"),2,5);
+        taxi1.showRideDetails();
+
+
 
 
     }

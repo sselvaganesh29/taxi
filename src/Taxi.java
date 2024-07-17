@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class Taxi
 {
@@ -79,11 +82,39 @@ public class Taxi
 
     public void createRide(int rideId, Person person, int startingPoint, int endingPoint)
     {
+        Properties rideps = new Properties();
+
+        try(FileInputStream ridefield = new FileInputStream("configuration/ride.properties"))
+        {
+            rideps.load(ridefield);
+
+            int startingPt = Integer.parseInt(rideps.getProperty("ride.startingPoint"));
+
+
             int destination = Math.abs(startingPoint - endingPoint);
             int fare = destination * pricePerkm;
-            Ride ride = new Ride(rideId, this, person, startingPoint, endingPoint,destination,fare);
+            Ride ride = new Ride(rideId, this, person, startingPoint, endingPoint, destination, fare);
             this.getRides().add( ride );
             ride.setEndingPoint(endingPoint);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showRideDetails()
+    {
+        for (Ride ride : getRides())
+        {
+            System.out.println("Ride ID: " + ride.getRideId());
+            System.out.println("Person Name: " + ride.getPerson().getName());
+            System.out.println("Starting Point: " + ride.getStartingPoint());
+            System.out.println("Ending Point: " + ride.getEndingPoint());
+            System.out.println("Destination: " + ride.getDestination());
+            System.out.println("Fare: " + ride.getFare());
+        }
     }
 
 
