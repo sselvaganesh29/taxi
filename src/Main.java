@@ -30,9 +30,9 @@ public class Main
         taxi1.showRideDetails();
 
         System.out.println("-----------------");
-        Demo demo = new Demo();
-        demo.dummy();
-
+        PropertiesClass propertiesclass = new PropertiesClass();
+        String a = propertiesclass.readProperty("selva");
+        System.out.println(a);
 
 
 
