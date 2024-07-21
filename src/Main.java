@@ -4,6 +4,7 @@ public class Main
 {
     public static void main(String[] args)
     {
+        AppProperties.loadProperties();
 
         Taxi taxi1 = new Taxi(365, "ROLLS", false);
         Taxi taxi2 = new Taxi(370, "VOLVO", true);
@@ -30,9 +31,20 @@ public class Main
         taxi1.showRideDetails();
 
         System.out.println("-----------------");
-        PropertiesClass propertiesclass = new PropertiesClass();
-        String a = propertiesclass.readProperty("selva");
+
+        AppProperties appProperties = new AppProperties();
+
+        String a = appProperties.readProperty("selva","no key found");
         System.out.println(a);
+
+        String b = appProperties.readProperty("suwetha", "panda");
+        System.out.println(b);
+
+        String c = appProperties.readProperty("1","no key found");
+        System.out.println(c);
+
+        String d = appProperties.readProperty("razik","Invalid Key");
+        System.out.println(d);
 
 
 
