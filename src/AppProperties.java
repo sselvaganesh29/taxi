@@ -26,7 +26,7 @@ public class AppProperties
 
         if(value == null)
         {
-            return Optional.of("Your key not found");
+            return Optional.empty();
         }
 
         try
