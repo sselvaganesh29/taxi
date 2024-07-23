@@ -1,9 +1,7 @@
-import java.io.File;
+
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Properties;
+import java.util.Optional;
 
 public class AppProperties
 {
@@ -17,19 +15,43 @@ public class AppProperties
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            System.out.println("Your properties file not found!!!");
         }
 
     }
 
-    public String readProperty( String key, String defaultValue )
+    public Optional <Object> readProperty( String key)
     {
-        return properties.getProperty( key, defaultValue);
+        String value = properties.getProperty(key);
+
+        if(value == null)
+        {
+            return Optional.of("Your key not found");
+        }
+
+        try
+        {
+            return  Optional.of(Integer.parseInt(value));
+        }
+        catch(Exception e)
+        {}
+
+        try
+        {
+            return  Optional.of(Long.parseLong(value));
+        }
+        catch(Exception e)
+        {}
+
+        try
+        {
+            return Optional.of(Float.parseFloat(value));
+        }
+        catch(Exception e)
+        {}
+
+        return Optional.of(value);
     }
 
-    public String readProperty( int key, String defaultValue)
-    {
-        String intKey = Integer.toString(key);
-        return  properties.getProperty(intKey, defaultValue);
-    }
+
 }

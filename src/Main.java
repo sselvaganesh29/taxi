@@ -1,3 +1,5 @@
+import java.util.Optional;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main
@@ -34,17 +36,23 @@ public class Main
 
         AppProperties appProperties = new AppProperties();
 
-        String a = appProperties.readProperty("selva","no key found");
-        System.out.println(a);
+       Optional<Object> a = appProperties.readProperty("stringkey");
+       a.ifPresent(System.out::println);
 
-        String b = appProperties.readProperty("suwetha", "panda");
-        System.out.println(b);
+       Optional<Object> b = appProperties.readProperty("floatKey");
+       b.ifPresent(System.out::println);
 
-        String c = appProperties.readProperty("1","no key found");
-        System.out.println(c);
+       Optional<Object> c = appProperties.readProperty("longKey");
+       c.ifPresent(System.out::println);
 
-        String d = appProperties.readProperty("razik","Invalid Key");
-        System.out.println(d);
+       Optional<Object> d = appProperties.readProperty("intKey");
+       d.ifPresent(System.out::println);
+
+        Optional<Object> e = appProperties.readProperty("emptyKey");
+        e.ifPresent(System.out::println);
+
+
+
 
 
 
