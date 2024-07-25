@@ -20,38 +20,70 @@ public class AppProperties
 
     }
 
-    public Optional <Object> readProperty( String key)
+    public Optional <String> strReadProperty( String key)
     {
         String value = properties.getProperty(key);
+        return Optional.ofNullable(value);
+    }
 
-        if(value == null)
+    public Optional <Integer> intReadProperty( String key )
+    {
+        String  value = properties.getProperty( key );
+
+        if ( key == null)
+        {
+            return Optional.empty();
+        }
+        try
+        {
+            return Optional.of(Integer.parseInt(value));
+        }
+        catch (Exception e)
         {
             return Optional.empty();
         }
 
+    }
+
+    public Optional <Long> longReadProperty( String key )
+    {
+        String  value = properties.getProperty( key );
+
+        if ( key == null)
+        {
+            return Optional.empty();
+        }
         try
         {
-            return  Optional.of(Integer.parseInt(value));
+            return Optional.of(Long.parseLong(value));
         }
-        catch(Exception e)
-        {}
-
-        try
+        catch (Exception e)
         {
-            return  Optional.of(Long.parseLong(value));
+            return Optional.empty();
         }
-        catch(Exception e)
-        {}
 
+    }
+
+    public Optional <Float> floatReadProperty( String key )
+    {
+        String  value = properties.getProperty( key );
+
+        if ( key == null)
+        {
+            return Optional.empty();
+        }
         try
         {
             return Optional.of(Float.parseFloat(value));
         }
-        catch(Exception e)
-        {}
+        catch (Exception e)
+        {
+            return Optional.empty();
+        }
 
-        return Optional.of(value);
     }
+
+
 
 
 }

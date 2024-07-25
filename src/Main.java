@@ -36,19 +36,19 @@ public class Main
 
         AppProperties appProperties = new AppProperties();
 
-       Optional<Object> a = appProperties.readProperty("stringkey");
+       Optional<String> a = appProperties.strReadProperty("stringkey");
        a.ifPresent(System.out::println);
 
-       Optional<Object> b = appProperties.readProperty("floatKey");
+       Optional<Integer> b = appProperties.intReadProperty("intKey");
        b.ifPresent(System.out::println);
 
-       Optional<Object> c = appProperties.readProperty("longKey");
+       Optional<Long> c = appProperties.longReadProperty("longKey");
        c.ifPresent(System.out::println);
 
-       Optional<Object> d = appProperties.readProperty("intKey");
+       Optional<Float> d = appProperties.floatReadProperty("floatKey");
        d.ifPresent(System.out::println);
 
-        Optional<Object> e = appProperties.readProperty("emptyKey");
+        Optional<String> e = appProperties.strReadProperty("emptyKey");
         e.ifPresent(System.out::println);
 
 
